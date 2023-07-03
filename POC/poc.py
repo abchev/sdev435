@@ -1,5 +1,5 @@
 from POC.db import DB
-from SDEV435.SDEV435 import Auth
+from modules.hsparkapi import Auth
 import pandas as pd
 import datetime
 

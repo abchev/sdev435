@@ -1,17 +1,20 @@
 from sqlalchemy import create_engine, text, TextClause
 from sqlalchemy.engine import Connection, Engine
 from typing import Optional, Union
+from dotenv import load_dotenv
+from os import getenv
 import pandas as pd
 
 class DB:
+    load_dotenv()
+    username = getenv("DB_USERNAME")
+    password = getenv("DB_PASSWORD")
+    host = getenv("DB_HOST")
+    port = getenv("DB_PORT")
+    db_name = getenv("DB_NAME")
     engine: Engine
     conn: Connection = None
-    user: str = "spark"
-    password: str = "HS9YkPj50Hqzol7IEsIb"
-    host: str = "192.168.1.54"
-    port: str = "5432"
-    db_name: str = "spark"
-    conn_string = f"postgresql+psycopg://{user}:{password}@{host}:{port}/{db_name}"
+    conn_string = f"postgresql+psycopg://{username}:{password}@{host}:{port}/{db_name}"
 
     def __init__(self):
         """

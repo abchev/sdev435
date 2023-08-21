@@ -38,8 +38,6 @@ class POC:
         :param username: Username to be used for authentication against the Spark API
         :param password: Password to be used for authentication against the Spark API
         """
-        # 
-        # if self.db.username_exists(self.constant_hash(username)):
         if self.db.password_matches(self.constant_hash(username), self.constant_hash(password)):
             user_token_details: dict = self.db.get_user_token_details(self.constant_hash(username))
             user_token = user_token_details["user_token"]

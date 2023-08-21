@@ -1,6 +1,8 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+# from webdriver_manager.chrome import ChromeDriverManager
 import re
 import time
 from typing import Optional
@@ -23,7 +25,9 @@ class Auth:
         :return: Dict of access_token, expires_at
         """
         # Set up Chrome options to run headless with minimal logging
+        service = Service()
         chrome_options = Options()
+        # chrome_options = ChromeOptions()
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--headless")
         chrome_options.add_argument("--disable-gpu")
@@ -33,7 +37,9 @@ class Auth:
         chrome_options.add_argument("--disable-logging")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--log-level=3")
-        driver = webdriver.Chrome(options=chrome_options)
+        # driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
+        # driver = webdriver.Chrome(service=Service(ChromeDriverManager(version='114.0.5735.90', cache_valid_range=0).install()), options=chrome_options)
+        driver = webdriver.Chrome(service=Service(), options=chrome_options)
         driver.get("https://ivehicle-plus.spark.harman.com/")
         
         # Sleep to allow JS to load and redirect

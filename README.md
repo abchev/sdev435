@@ -17,7 +17,7 @@ pip install {future_module_name}
 from {future_module_name} import Auth, API
 
 username: str = "HARMAN Spark User"
-password: str "HARMAN Spark Password"
+password: str = "HARMAN Spark Password"
 
 # Initialize Auth class and retrieve access token
 auth = Auth()
